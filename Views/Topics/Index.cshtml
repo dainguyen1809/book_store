@@ -1,0 +1,50 @@
+﻿@{
+	ViewData["Title"] = "Book Themes";
+}
+
+	@model IEnumerable<Topic>
+
+<partial name="_SidebarPartial"/>
+
+	<div class="col-10">
+
+	@{
+		var listRand = new List<Topic>();
+		if (Model != null)
+		{
+			var rand = new Random();
+			listRand = Model.OrderBy(x => rand.Next()).Take(7).ToList();
+		}
+
+		if (Model != null)
+		{
+			<div class="section search-result-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="heading">Category: Topics</div>
+						</div>
+					</div>
+					<div class="row posts-entry">
+						<div class="col-lg-8">
+							@foreach (var obj in listRand)
+							{
+								<div class="blog-entry d-flex blog-entry-search-item">
+									<p>
+										<a asp-controller="Topics"
+										   asp-action="BookByTopics"
+										   asp-route-Id="@obj.Id"
+										   class="btn btn-sm btn-outline-primary mx-3">
+											@obj.TopicName
+										</a>
+									</p>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	}
+	</div>
+</div>

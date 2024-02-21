@@ -1,0 +1,77 @@
+﻿@using Book_Store.Models.ViewModels
+@model CartViewModel
+
+
+<div class="container p-lg-5">
+
+    <div class="row mb-3">
+        <h4 class="text-center">Giỏ hàng của bạn</h4>
+    </div>
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                @if (Model.listCartItems.Count > 0)
+                {
+                    @foreach (var obj in Model.listCartItems)
+                    {
+                        <div class="title">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col align-self-center text-right text-muted mt-4">@obj.Quantity items</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row main align-items-center m-2">
+                                <div class="col-2"><img class="img-fluid" src="~/Images/@obj.UrlImgCover"></div>
+                                <div class="col">
+                                    <div class="row text-muted">Mã Sách: @obj.BookId</div>
+                                    <div class="row">Tên sách: @obj.BookName</div>
+                                </div>
+                                <div class="col d-flex">
+                                    <a class="btn btn-primary btn-sm mx-2" asp-controller="Cart" asp-action="Decrease" asp-route-Id="@obj.BookId">-</a>
+                                    <a href="#" class="border p-2">@obj.Quantity</a>
+                                    <a class="btn btn-primary btn-sm mx-2" asp-controller="Cart" asp-action="Increase" asp-route-Id="@obj.BookId">+</a>
+                                    <a class="btn btn-danger btn-sm" asp-controller="Cart" asp-action="Remove" asp-route-Id="@obj.BookId">Remove</a>
+                                </div>
+                                <div class="col">&euro; @obj.Price</div>
+                            </div>
+                        </div>
+                    }
+                    <div class="back-to-shop p-1"><a asp-controller="Home" asp-action="Index">&leftarrow;<span class="text-muted"> Back to shop</span></a></div>
+                }
+                else
+                {
+                    <h3 class="text-center">Giỏ hàng đang trống</h3>
+                    <div class="back-to-shop p-1"><a asp-controller="Home" asp-action="Index">&leftarrow;<span class="text-muted"> Back to shop</span></a></div>
+                }
+            </div>
+
+            <div class="col-md-4 summary pt-2">
+                <div><h5><b>Summary</b></h5></div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">ITEMS @Model.listCartItems.Count</div>
+                    <div class="col text-right">&euro; @Model.Total.ToString()</div>
+                </div>
+                <form>
+                    <p>SHIPPING</p>
+                    <select><option class="text-muted">Giảm 5%</option></select>
+                    <p>Nhập mã giảm giá</p>
+                    <input id="code" placeholder="Enter your code">
+                </form>
+                    <div class="col">Tổng tiền</div>
+                    <div class="col text-right">&euro; @Model.Total.ToString()</div>
+                @if(User.Identity?.IsAuthenticated ?? false)
+                {
+                    <a asp-controller="Paypal" asp-action="CreatePayment" class="btn btn-success">Thanh Toán</a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="SignIn" asp-route-returnUrl="@Context.Request.Path" class="btn btn-warning">Đăng nhập để thanh toán</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

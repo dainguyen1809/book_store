@@ -1,0 +1,36 @@
+﻿@{
+	ViewData["Title"] = "Products";
+}
+
+<partial name="_SidebarPartial" />
+
+<div class="col-10">
+	@model IEnumerable<Book>
+
+	@{
+		if (Model != null)
+		{
+			<section class="section posts-entry posts-entry-sm bg-light">
+				<div class="container d-flex">
+					<div class="row">
+						@foreach (var obj in Model)
+						{
+							<div class="col-md-6 col-lg-3">
+								<div class="blog-entry">
+									<a asp-controller="Books" asp-action="Details" asp-route-Id="@obj.Id" class="img-link">
+										<img src="~/Images/@obj.UrlImgCover" alt="Image" class="img-fluid">
+									</a>
+									<h2>Tên sách: @obj.BookName</h2>
+									<span>Giá: @obj.Price</span>
+									<p>@obj.Description</p>
+									<span class="date">@obj.DateUpdate.ToString("dd/MM/yyyy")</span>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</section>
+		}
+	}
+</div>
+</div>

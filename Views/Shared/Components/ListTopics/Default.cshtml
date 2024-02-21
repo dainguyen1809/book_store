@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Topic>
+
+@{
+    var randTopics = new List<Topic>();
+    if(Model != null)
+    {
+        var rand = new Random();
+        randTopics = Model.OrderBy(t => rand.Next()).Take(4).ToList();
+    }
+    foreach(var obj in randTopics)
+    {
+        <li><a asp-controller="Topics" asp-action="BookByTopics" asp-route-Id="@obj.Id">@obj.TopicName</a></li>
+    }
+}

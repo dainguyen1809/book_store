@@ -1,0 +1,57 @@
+﻿@model SignInViewModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+
+<div class="container col-4">
+    <div class="row d-flex justify-content-center">
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+            </div>
+            <form method="post" role="form" asp-controller="Account" asp-action="SignIn">
+                <input type="hidden" asp-for="returnURL" />
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input asp-for="Account" type="text" class="form-control form-control-user"
+                            id="" aria-describedby="emailHelp"
+                            placeholder="Nhập tên đăng nhập">
+                    <span asp-validation-for="Account" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input asp-for="Password" type="password" class="form-control form-control-user"
+                            id="" placeholder="Nhập mật khẩu">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+               @*  <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                        <label class="custom-control-label" for="customCheck">Lưu đăng nhập</label>
+                    </div>
+                </div> *@
+                <button type="submit" class="btn btn-success btn-user btn-block px-5 mt-2">
+                    Đăng nhập
+                </button>
+                <hr>
+                <a href="/GoogleOAuth/SignIn" class="btn btn-google btn-user btn-block">
+                    <i class="bi bi-google"></i> Đăng nhập bằng Google
+                </a>
+            </form>
+            <hr>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <div class="text-center">
+                        <a asp-controller="Account" asp-action="Register" class="small">Quên mật khẩu</a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="text-center">
+                        <a asp-controller="Account" asp-action="Register" class="small">Đăng ký tài khoản</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

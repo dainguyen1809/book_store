@@ -1,0 +1,7 @@
+*.html
+*.css
+*.scss
+/wwwroot
+/bin
+/obj
+/Properties

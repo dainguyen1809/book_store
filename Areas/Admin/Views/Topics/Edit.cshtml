@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Book_Store.Models.Topic
+
+
+<div class="container">
+    <div class="row">
+        <h3>Form Edit</h3>
+    </div>
+    <form asp-action="Edit" method="post">
+        <div class="mb-3">
+            <label asp-for="TopicName" class="form-label">Tên NXB</label>
+            <input asp-for="TopicName" type="text" class="form-control" id="">
+            <span asp-validation-for="TopicName" class="text-danger"></span>
+        </div>
+        <div class="row pt-2">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Update</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Topics" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Book>
+
+
+@foreach (var obj in Model.Take(5))
+{
+    <div class="blog-entry d-flex blog-entry-search-item">
+        <a asp-controller="Books" asp-action="Details" asp-route-Id="@obj.Id" class="img-link me-4">
+            <img src="~/Images/@obj.UrlImgCover" alt="Image" class="img-fluid">
+        </a>
+        <div>
+            <span class="date">@obj.DateUpdate.ToString("dd/MM/yyyy") &bullet;</span>
+            <h2><a asp-controller="Books" asp-action="Details">@obj.BookName</a></h2>
+            <p>@obj.Description</p>
+            <p><a asp-controller="Books" asp-action="Details" class="btn btn-sm btn-outline-primary">Read More</a></p>
+        </div>
+    </div>
+}

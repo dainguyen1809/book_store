@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Book_Store.Models.Book
+
+
+<div class="container">
+    <div class="row">
+        <h3>Form Edit</h3>
+    </div>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="BookName" class="form-label">Tên sách</label>
+            <input asp-for="BookName" type="text" class="form-control" id="">
+            <span asp-validation-for="BookName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Giá</label>
+            <input asp-for="Price" type="text" class="form-control" id="">
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Mô tả</label>
+            <textarea asp-for="Description" class="form-control" id="" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DateUpdate" class="form-label">Ngày cập nhật</label>
+            <input asp-for="DateUpdate" type="date" class="form-control" id="">
+            <span asp-validation-for="DateUpdate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrlImgCover" class="form-label">Ảnh bìa</label>
+            <input asp-for="UrlImgCover" class="form-control-file" type="file" id="formFile">
+            <span asp-validation-for="UrlImgCover" class="text-danger"></span>
+            <img src="~/Images/@Model.UrlImgCover" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="InventoryNumber" class="form-label">Số lượng tồn kho</label>
+            <input asp-for="InventoryNumber" type="number" class="form-control" id="">
+            <span asp-validation-for="InventoryNumber" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TopicId" class="form-label">chủ đề</label>
+            <select asp-for="TopicId" class="form-control" asp-items="ViewBag.Topics">
+                <option>Chọn chủ đề</option>
+            </select>
+            <span asp-validation-for="TopicId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PublisherId" class="form-label">chủ đề</label>
+            <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.Publishers">
+                <option>Chọn NXB</option>
+            </select>
+            <span asp-validation-for="PublisherId" class="text-danger"></span>
+        </div>
+        <div class="row pt-2">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Updates</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Books" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+
+    </form>
+</div>

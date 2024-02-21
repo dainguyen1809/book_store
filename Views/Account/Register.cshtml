@@ -1,0 +1,83 @@
+﻿@model Customer
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-7">
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Đăng ký tài khoản</h1>
+            </div>
+            <form asp-controller="Account" asp-action="Register">
+                <div class="form-group">
+                    <label>Họ Tên</label>
+                    <input asp-for="CustomerName" type="text" class="form-control form-control-user" placeholder="Nhập tên của bạn">
+                    <span asp-validation-for="CustomerName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ngày sinh</label>
+                    <input asp-for="Birth" type="date" class="form-control form-control-user">
+                    <span asp-validation-for="Birth" class="text-danger"></span>
+                </div>
+                <select asp-for="Gender" class="form-select" aria-label="Default select example">
+                    <option selected>Chọn giới tinh</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input asp-for="Phone" type="tel" class="form-control form-control-user" id="" placeholder="Nhập số điện thoại">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input asp-for="Account" type="text" class="form-control form-control-user" id="" placeholder="Nhập tên đăng nhập">
+                    <span asp-validation-for="Account" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input asp-for="Password" type="password" class="form-control form-control-user" id="" placeholder="Nhập mật khẩu">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input asp-for="Email" type="email" class="form-control form-control-user" id="" placeholder="Nhập địa chỉ Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input asp-for="Address" type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nhập địa chỉ của bạn">
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <button class="btn btn-primary">
+                    Đăng ký
+                </button>
+                <hr>
+                <div class="text-center">
+                    <a class="btn btn-google btn-user btn-block">
+                        <i class="bi bi-google"></i> Login with Google
+                    </a>
+                    <a class="btn btn-facebook btn-user btn-block">
+                        <i class="bi bi-facebook"></i> Login with Facebook
+                    </a>
+                </div>
+            </form>
+            <hr>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <div class="text-center">
+                        <a asp-controller="Account" asp-action="Register" class="small">Quên mật khẩu</a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="text-center">
+                        <a asp-controller="Account" asp-action="SignIn" asp-route-returnUrl="@Context.Request.Path" class="small">Đã có tài khoản ?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

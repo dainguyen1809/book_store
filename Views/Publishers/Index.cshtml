@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Publishers";
+}
+
+
+<partial name="_SidebarPartial" />
+
+<div class="col-10">
+    @model IEnumerable<Publisher>;
+
+    <div class="container">
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Publisher Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var listRand = new List<Publisher>();
+                    if (Model != null)
+                    {
+                        var rand = new Random();
+                        listRand = Model.OrderBy(x => rand.Next()).Take(7).ToList();
+                    }
+                }
+                @foreach (var obj in listRand)
+                {
+                    <tr>
+                        <td><a asp-controller="Books" asp-action="BookByPublisher" asp-route-Id="@obj.Id">@obj.NamePublisher</a></td>
+                        <td>@obj.Address</td>
+                        <td>@obj.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<section class="section posts-entry">
+	<partial name="_SidebarPartial" />
+	<div class="container">
+		<div class="row col-12 mb-4">
+			<div class="col-sm-6">
+				<h2 class="posts-entry-title">Gợi ý cho bạn</h2>
+			</div>
+			<div class="col-sm-6 text-sm-end"><a asp-controller="Topics" asp-action="Index" class="read-more">View All</a></div>
+		</div>
+		<div class="row g-3">
+			<div class="col-md-9">
+				<div class="row g-3">
+					<vc:suggest-books></vc:suggest-books>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="sidebar-box">
+					<h3 class="heading">Danh sách các chủ đề</h3>
+					<ul class="categories">
+						<vc:list-topics></vc:list-topics>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Start posts-entry -->
+<section class="section posts-entry posts-entry-sm bg-light">
+	<div class="container">
+		<div class="col-12">
+			<h2 class="mb-4">Các sản phẩm mới</h2>
+		</div>
+		<div class="row">
+			<vc:new-books></vc:new-books>
+		</div>
+	</div>
+</section>
+<!-- End posts-entry -->
+

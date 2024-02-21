@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+}
+
+@model Book_Store.Models.Book
+
+
+@{
+    if (Model != null)
+    {
+
+        <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/Images/@Model.UrlImgCover');">
+            <div class="container">
+                <div class="row same-height justify-content-center">
+                    <div class="col-md-6">
+                        <div class="post-entry text-center">
+                            <h1 class="mb-4">Don’t assume your user data in the cloud is safe</h1>
+                            <div class="post-meta align-items-center text-center">
+                                <figure class="author-figure mb-0 me-3 d-inline-block"><img src="/Images/@Model.UrlImgCover" alt="Image" class="img-fluid"></figure>
+                                <span>Ngày cập nhật: @Model.DateUpdate.ToString("dd/MM/yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="py-5">
+        <partial name="_SidebarPartial" />
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="~/Images/@Model.UrlImgCover" alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">@Model.BookName</h1>
+                        <span class="fs-4 fw-bolder">Tác giả: @Model.Publisher.NamePublisher</span>
+                        <div class="fs-5 mt-2">
+                            <span class="text-decoration-line-through">$@Model.Price</span>
+                            <span>$10</span>
+                        </div>
+                        <p class="lead">@Model.Description</p>
+                        <div class="d-flex">
+                            <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" />
+                            <a class="btn btn-outline-dark flex-shrink-0" asp-controller="Cart" asp-action="AddToCart" asp-route-Id="@Model.Id">
+                                <i class="bi bi-basket3-fill"></i>
+                                Mua Ngay
+                            </a>
+                            <a asp-controller="Books" asp-action="Index" class="btn btn-outline-dark flex-shrink-0 mx-3">
+                                <i class="bi bi-basket3-fill"></i>
+                                Mua Tiếp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}

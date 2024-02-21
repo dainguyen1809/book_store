@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model Book_Store.Models.Publisher
+
+
+<div class="container">
+    <div class="row">
+        <h3>Form Insert</h3>
+    </div>
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label asp-for="NamePublisher" class="form-label">Tên NXB</label>
+            <input asp-for="NamePublisher" type="text" class="form-control" id="">
+            <span asp-validation-for="NamePublisher" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Address" class="form-label">Địa Chỉ</label>
+            <input asp-for="Address" type="text" class="form-control" id="">
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="Phone" class="form-label">Số điện thoại</label>
+            <input asp-for="Phone" type="text" class="form-control" id="">
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        
+        <div class="row pt-2">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Submit</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Publishers" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+
+    </form>
+</div>

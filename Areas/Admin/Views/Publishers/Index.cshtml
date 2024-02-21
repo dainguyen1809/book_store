@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<Publisher>
+
+<h1 class="text-center">Quản lý NXB</h1>
+
+@{
+    @if (Model != null)
+    {
+        <div class="container">
+            <table class="table table-bordered table-dark text-center table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Publisher Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>Phone</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.NamePublisher</td>
+                        <td>@obj.Address</td>
+                        <td>@obj.Phone</td>
+                        <td><a asp-controller="Publishers" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Edit</a></td>
+                            <td><a asp-controller="Publishers" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-danger"><i class="bi bi-trash2-fill"></i> Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+}
